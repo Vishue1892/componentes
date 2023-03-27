@@ -18,9 +18,7 @@ class _InputsScreenState extends State<InputsScreen> {
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-        children: [
-          _crearEntrada(),
-        ],
+        children: [_crearEntrada(), _crearEntradaPswd()],
       ),
     );
   }
@@ -28,11 +26,63 @@ class _InputsScreenState extends State<InputsScreen> {
   Widget _crearEntrada() {
     return TextField(
       autofocus: true,
-      textCapitalization: TextCapitalization.words,
+      textAlign: TextAlign.center,
+      textCapitalization: TextCapitalization.sentences,
+      style: const TextStyle(
+        color: Colors.amberAccent,
+        fontWeight: FontWeight.bold,
+      ),
+      cursorColor: Colors.red,
+      cursorRadius: const Radius.circular(10.0),
+      cursorWidth: 5.0,
+      //maxLength:4,
+      maxLines: null,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
+        hintText: "Escriba su nombre",
+        labelText: "Nombre:",
+        //helperText: "Nombre",
+        //icon: const Icon(Icons.person),
+        prefixIcon: const Icon(Icons.person),
+        //iconColor:Colors.blueGrey,//solo aplica para
+        //prefixIcon:const CircularProgressIndicator(),
+      ),
+      onChanged: (valor) {
+        _userName = valor;
+        print(_userName);
+      },
+    );
+  }
+
+  Widget _crearEntradaPswd() {
+    return TextField(
+      autofocus: true,
+      textAlign: TextAlign.center,
+      textCapitalization: TextCapitalization.sentences,
+      style: const TextStyle(
+        color: Colors.amberAccent,
+        fontWeight: FontWeight.bold,
+      ),
+      cursorColor: Colors.red,
+      cursorRadius: const Radius.circular(10.0),
+      cursorWidth: 5.0,
+      maxLength: 8,
+      obscureText: true,
+      keyboardType: TextInputType.number,
+      //maxLines: 1,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        hintText: "Escriba contraseña",
+        labelText: "Password:",
+        //helperText: "Nombre",
+        //icon: const Icon(Icons.person),
+        suffixIcon: const Icon(Icons.key),
+        //iconColor:Colors.blueGrey,//solo aplica para
+        //prefixIcon:const CircularProgressIndicator(),
       ),
       onChanged: (valor) {
         _userName = valor;
